@@ -8,6 +8,9 @@
           <span>이름을 입력하세요 : </span><input type="text">
         </div>
       </template>
+      <template #footer="{on, footer}">
+        <p v-on="on">{{footer}}</p>
+      </template>
     </ModalVue>
   </div>
 </template>

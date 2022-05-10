@@ -9,16 +9,23 @@
             </div>
             <div class="popup-body">
                 <div class="body-content">
-                <div class="body-titlebox">
-                    <h1>
-                        <slot name="sub-title"></slot>
-                    </h1>
+                    <div class="body-titlebox">
+                        <h1>
+                            <slot name="sub-title"></slot>
+                        </h1>
+                    </div>
+                    <div class="body-contentbox">
+                        <p>
+                            <slot name="default"></slot>
+                        </p>
+                    </div>
                 </div>
-                <div class="body-contentbox">
-                    <p>
-                        <slot name="default"></slot>
-                    </p>
-                </div>
+                <div>
+                    <div class="footer">
+                        <p>
+                            <slot :footer="footer" :on="{click : click}" name="footer"></slot>
+                        </p>
+                    </div>
                 </div>
             </div>
             </div>
@@ -37,8 +44,17 @@
         },
 
         data : () => ({
-            
-        })
+            title : '제목!!',
+            subTitle : '부제목!!',
+            body : '디폴트 컨텐츠 부분',
+            footer : '푸터!!'
+        }),
+
+        methods : {
+            click() {
+                alert('클릭하였습니다!');
+            }
+        }
     }
 </script>
 
