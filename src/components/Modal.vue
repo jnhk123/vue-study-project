@@ -23,7 +23,7 @@
                 <div>
                     <div class="footer">
                         <p>
-                            <slot :footer="footer" :on="{click : click}" name="footer"></slot>
+                            <slot :footer="footer" :on="{click : clickFooter}" name="footer"></slot>
                         </p>
                     </div>
                 </div>
@@ -44,15 +44,12 @@
         },
 
         data : () => ({
-            title : '제목!!',
-            subTitle : '부제목!!',
-            body : '디폴트 컨텐츠 부분',
             footer : '푸터!!'
         }),
 
         methods : {
-            click() {
-                alert('클릭하였습니다!');
+            clickFooter() {
+                alert('푸터를 클릭하였습니다!');
             }
         }
     }
