@@ -1,13 +1,13 @@
 import axios from "axios";
+import store from "@/store";
 
 export default {
 
     methods : {
-        async $api(url, method, data, token, errorCallback) {
-
+        async $api(url, method, data, errorCallback) {
             return axios({
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${store.getters.token}`
                 },
                 method: method
                 , url
@@ -21,7 +21,6 @@ export default {
                     console.error(e);
                 }
             });
-            
         }
     }
 

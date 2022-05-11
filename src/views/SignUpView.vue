@@ -9,8 +9,6 @@
 </template>
 
 <script>
-    import axios from "axios"
-
     export default {
 
         data : () => ({
@@ -20,18 +18,18 @@
         }),
 
         methods : {
-            signUp() {
-                axios.post('https://api.devcury.kr/auth/user/new', {
+            async signUp() {
+
+                const response = await this.$api('https://api.devcury.kr/auth/user/new', 'POST', {
                     id : this.id,
                     pwd : this.pwd,
                     name : this.name
-                }).then(response => {   
-                    if(response.status === 201){
-                        alert('회원가입 성공');
-                    }
-                }).catch(error=>{
-                    alert(error.response.data.error);
                 });
+
+                if(response.status === 201){
+                    alert('회원가입 성공');
+                }
+
             }
         }
     }
