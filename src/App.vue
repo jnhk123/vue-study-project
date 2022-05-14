@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ModalVue :on="true">
+    <ModalVue :display="false">
       <template v-slot:title>slot 활용 제목입니다.</template>
       <template #sub-title>부제목입니다.</template>
       <template>

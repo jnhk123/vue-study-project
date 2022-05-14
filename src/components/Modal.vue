@@ -1,5 +1,5 @@
 <template>
-    <div class="container" v-if="on"> 
+    <div class="container" v-if="display"> 
         <div class="popup-wrap" id="popup"> 
             <div class="popup">	
             <div class="popup-head">
@@ -37,7 +37,7 @@
     export default {
 
         props : {
-            on : {
+            display : {
                 type : Boolean,
                 default : true
             }
