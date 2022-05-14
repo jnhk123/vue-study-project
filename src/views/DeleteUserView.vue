@@ -7,9 +7,12 @@
 
 <script>
     import { mapGetters } from "vuex";
-    import axios from "axios"
+    import mixins from '@/mixins'
 
     export default {
+
+        mixins : [mixins],
+
         data : () =>({}),
 
         methods : {
@@ -18,17 +21,27 @@
                     return false;
                 }
 
-                axios.delete('https://api.devcury.kr/api/auth/user', {
-                    headers : {
-                        Authorization: `Bearer ${this.token}`
-                    }
-                }).then(response => {
-                    if(response.status === 200){
-                        alert('삭제되었습니다.');
-                    }
-                }).catch(error=> {
-                    alert(error.response.data.error);
-                });
+                this.$api('/api/auth/user', {}, 'delete')
+                    .then(response => {
+                        if(response.status === 200){
+                            alert('삭제되었습니다.')
+                        }
+                    })
+                    .catch(error => {
+                        alert(error.response.data.error);
+                    });
+
+                // axios.delete('https://api.devcury.kr/api/auth/user', {
+                //     headers : {
+                //         Authorization: `Bearer ${this.token}`
+                //     }
+                // }).then(response => {
+                //     if(response.status === 200){
+                //         alert('삭제되었습니다.');
+                //     }
+                // }).catch(error=> {
+                //     alert(error.response.data.error);
+                // });
             }
         },
         
