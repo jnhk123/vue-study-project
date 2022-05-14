@@ -1,20 +1,16 @@
 <template>
     <div>
         유저삭제
-        <p>
-            토큰 : <input type="text" v-model="token">
-        </p>
         <button @click="deleteUser">삭제</button>
     </div>
 </template>
 
 <script>
+    import { mapGetters } from "vuex";
     import axios from "axios"
 
     export default {
-        data : () =>({
-            token : ''
-        }),
+        data : () =>({}),
 
         methods : {
             deleteUser() {
@@ -34,7 +30,11 @@
                     alert(error.response.data.error);
                 });
             }
-        }   
+        },
+        
+        computed : {
+            ...mapGetters(['token'])
+        }
 
     }
 </script>
